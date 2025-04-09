@@ -12,14 +12,14 @@ const cardData = [
         section: "Informazioni Generali",
         id: "info",
         title: "Info",
-        text: "Questa pagina contine tutta la documentazione utile a comprendere la logica della progettazione dei database (DB) con il modello E-R. La documentazione inizia dalla sezione Le basi 1: Cos'è un DB?. È possibile trovare il significato e la spiegazione di acuni termini (indicati così: Dizionario{cos'è?}) nel Dizionario. È possibile accedere alla documentazione a questo link: [**bit.ly/db_docs**](https://bit.ly/db_docs)",
+        text: "Questa pagina contiene tutta la documentazione utile a comprendere la logica della progettazione dei database (DB) con il modello E-R. La documentazione inizia dalla sezione Le basi 1: Cos'è un DB?. È possibile trovare il significato e la spiegazione di alcuni termini (indicati così: [Dizionario<sup>{cos'è?}</sup>](#sezione-dizionario)) nel Dizionario. È possibile accedere alla documentazione a questo link: [**bit.ly/web-DB_Docs**](https://bit.ly/web-DB_Docs)",
         style: { backgroundColor: 'rgba(150, 255, 150, 0.5)' }
     },
     {
         section: "Le Basi 1 - Cos'è un DB?",
         id: "basi-1.1",
         title: "A cosa servono i DB?",
-        text: "I **DB** sono usati prevalentemente in ambito aziendale, quindi sono poco conosciuti agli utenti comuni. Lo scopo principale dei DB è quello di archiviare dei dati. Tuttavia questi dati devono essere salvati in modo da permetterne un facile e veloce accesso. La figura del **DB Admin** si occupa proprio di questo: progettare, creare e mantenere uno o più DB. Per la progettazione di un DB è fondamentale che assicurarsi che i dati salvati in un DB siano **indipendenti** dalle applicazioni collegate al DB. Questo significa che una modifica nella struttura del DB non richieda una modifica al codice del <a href='#frontend' target='_blank'>frontend<sup>{cos'è?}</sup></a>. Nei DB, la definizione dei dati e i dati stessisono salvati all’interno dello stesso database. Inoltre è importante che i dati salvati del DB *non* siano **ritondanti**, ovvero che non ci siano duplicati (inutili) dei dati. I dati salvati nei DB devono essere anche **coerenti**, **consistenti** e deve essere possibile un **accesso e modifica simultanea** da più utenze. La gestione complessiva di un DB è affidata ad un **DBMS** (*DataBase Managment System*, *Sistema di Gestione DataBase*), un software apposito che si occupa della gestione dei dati e della loro *memorizzazione fisica* (su un supporto di archiviazione).",
+        text: "I **DB** sono usati prevalentemente in ambito aziendale, quindi sono poco conosciuti agli utenti comuni. Lo scopo principale dei DB è quello di archiviare dei dati. Tuttavia questi dati devono essere salvati in modo da permetterne un facile e veloce accesso. La figura del **DB Admin** si occupa proprio di questo: progettare, creare e mantenere uno o più DB. Per la progettazione di un DB è fondamentale che assicurarsi che i dati salvati in un DB siano **indipendenti** dalle applicazioni collegate al DB. Questo significa che una modifica nella struttura del DB non richieda una modifica al codice del <a href='#frontend' target='_blank'>frontend<sup>{cos'è?}</sup></a>. Nei DB, la definizione dei dati e i dati stessi sono salvati all’interno dello stesso database. Inoltre è importante che i dati salvati del DB *non* siano **ridondanti**, ovvero che non ci siano duplicati (inutili) dei dati. I dati salvati nei DB devono essere anche **coerenti**, **consistenti** e deve essere possibile un **accesso e modifica simultanea** da più utenze. La gestione complessiva di un DB è affidata ad un **DBMS** (*DataBase Managment System*, *Sistema di Gestione DataBase*), un software apposito che si occupa della gestione dei dati e della loro *memorizzazione fisica* (su un supporto di archiviazione).",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
@@ -33,7 +33,7 @@ const cardData = [
         section: "Le Basi 1 - Cos'è un DB?",
         id: "basi-1.3",
         title: "Modellazione logica di un DB",
-        text: "Esistono diversi tipi di modelli logici:<br>• gerarchico, rappresentabile tramite un albero (anni ‘60);<br>• reticolare, rappresentabile tramite un grafo (anni ‘60);<br>• **relazionale**, attualmente il più diffuso, rappresentabile mediante tabelle e relazioni tra esse(anni ‘70);<br>• a oggetti, che è una estensione alle basi di dati del paradigma “Object- Oriented”, tipico dellaprogrammazione a oggetti (anni ‘80);<br>• XML, molto utilizzato come strumento per l’esportazione di dati tra diverse applicazioni (anni‘90).",
+        text: "Esistono diversi tipi di modelli logici:<br>• gerarchico, rappresentabile tramite un albero (anni ‘60);<br>• reticolare, rappresentabile tramite un grafo (anni ‘60);<br>• **relazionale**, attualmente il più diffuso, rappresentabile mediante tabelle e relazioni tra esse(anni ‘70);<br>• a oggetti, che è una estensione alle basi di dati del paradigma “Object- Oriented”, tipico della programmazione a oggetti (anni ‘80);<br>• XML, molto utilizzato come strumento per l’esportazione di dati tra diverse applicazioni (anni‘90).",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
@@ -47,28 +47,21 @@ const cardData = [
         section: "Le Basi 2 - Componenti di un DB",
         id: "basi-2.1",
         title: "Da cosa sono composte le entità? - Istanze ed attributi",
-        text: "Un'entità (paragonabile ad una tabella) è formata da una o più istanze, che a loro volta sono formate dagli attributi.<br>Esempio: L'entità Dipendente è formata da diersi attributi (nome, cognome, età, ecc). Invece un'istanza dell'entità è formata da un insieme degli attributi. Se si pensa al DB come ad una tabella si può dire che l'entità è la tabella, gli attributi sono i nomi delle colonne e le istanze sono le righe.",
+        text: "Un'entità (paragonabile ad una tabella) è formata da una o più istanze, che a loro volta sono formate dagli attributi.<br>Esempio: L'entità Dipendente è formata da diversi attributi (nome, cognome, età, ecc). Invece un'istanza dell'entità è formata da un insieme degli attributi. Se si pensa al DB come ad una tabella si può dire che l'entità è la tabella, gli attributi sono i nomi delle colonne e le istanze sono le righe.",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Le Basi 2 - Componenti di un DB",
         id: "basi-2.2",
-        title: "Classificazione delgi attributi - 1",
-        text: "Gli **attributi** si possono dividere inizialmente in: **identificatori** (**chiavi**) o **descrittori** e **scalari** o **multipli**. Gli attributi *identificatori* anche detti *chiavi*, permettono di identificare univocamente un'istanza di un'entità (una riga di una tabella), per esempio un ID o il CF<sup>{cos'è}/Wikipedia</sup>. Invece i *descrittori* descrivono una caratteristica non unica di un'istanza, per esempio nome e cognome. Gli *attributi scalari* possono avere un solo valore nell'istanza (per esempio: luogo di nascita), mentre i *multipli* possono avre più valori nell'istanza (per esempio: lingue_parlate).",
+        title: "Classificazione degli attributi - 1",
+        text: "Gli **attributi** si possono dividere inizialmente in: **identificatori** (**chiavi**) o **descrittori** e **scalari** o **multipli**. Gli attributi *identificatori* anche detti *chiavi*, permettono di identificare univocamente un'istanza di un'entità (una riga di una tabella), per esempio un ID o il CF<sup>{cos'è}/Wikipedia</sup>. Invece i *descrittori* descrivono una caratteristica non unica di un'istanza, per esempio nome e cognome. Gli *attributi scalari* possono avere un solo valore nell'istanza (per esempio: luogo di nascita), mentre i *multipli* possono avere più valori nell'istanza (per esempio: lingue_parlate).",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Le Basi 2 - Componenti di un DB",
         id: "basi-2.3",
-        title: "Classificazione delgi attributi - 2",
-        text: "Gli attrubuti possono anche essere classificati in base alla loro natura.<br>&nbsp; **Semplice** (*atomico*): Non è ulteriormente scomponibile, elementare.<br>&nbsp; **Composto**: È costituito da un insieme di componenti.<br>&nbsp; **Opzionale** (*parziale*): È possibile la sua assenza, cioè potrebbe nonesistere in qualche istanza.<br>&nbsp; **Obbligatorio** (*totale*): È l’opposto di opzionalee deve sempre esserepresente un suo valore in ogni istanza.<br>&nbsp; **Costante** (*statico*): I valori non possono essere cambiati per tutti il“ciclo di vita” dell’attributo.<br>&nbsp; **Modificabile** (dinamico): È l’opposto di costante, cioè i suoi valori possonovenire modificati.<br>&nbsp; **Calcolato**: Il valore è calcolato con un algoritmo.<br>&nbsp; **Esplicito**: È l’opposto di calcolato. **Unico** (*univoco*): Tutte le istanze della classe hanno valore diverso.<br>&nbsp; **Generico** (*multivalore*): È l’opposto di unico.<br>&nbsp; **Temporale**: Alcuni attributi hanno una validità temporale,cioè dopo un certo tempo non hanno piùsignificatività se non per l’archivio storico.",
-        style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
-    },
-    {
-        section: "Le Basi 2 - Componenti di un DB",
-        id: "basi-2.4",
-        title: "Da cosa sono composte leentità? - Istanze ed attributi",
-        text: "Gli attrubuti possono anche essere classificati in base alla loro natura.<br>&nbsp; **Semplice** (*atomico*): Non è ulteriormente scomponibile, elementare.<br>&nbsp; **Composto**: È costituito da un insieme di componenti.<br>&nbsp; **Opzionale** (*parziale*): È possibile la sua assenza, cioè potrebbe nonesistere in qualche istanza.<br>&nbsp; **Obbligatorio** (*totale*): È l’opposto di opzionalee deve sempre esserepresente un suo valore in ogni istanza.<br>&nbsp; **Costante** (*statico*): I valori non possono essere cambiati per tutti il“ciclo di vita” dell’attributo.<br>&nbsp; **Modificabile** (dinamico): È l’opposto di costante, cioè i suoi valori possonovenire modificati.<br>&nbsp; **Calcolato**: Il valore è calcolato con un algoritmo.<br>&nbsp; **Esplicito**: È l’opposto di calcolato. **Unico** (*univoco*): Tutte le istanze della classe hanno valore diverso.<br>&nbsp; **Generico** (*multivalore*): È l’opposto di unico.<br>&nbsp; **Temporale**: Alcuni attributi hanno una validità temporale,cioè dopo un certo tempo non hanno piùsignificatività se non per l’archivio storico.",
+        title: "Classificazione degli attributi - 2",
+        text: "Gli attributi possono anche essere classificati in base alla loro natura.<br>&nbsp; **Semplice** (*atomico*): Non è ulteriormente scomponibile, elementare.<br>&nbsp; **Composto**: È costituito da un insieme di componenti.<br>&nbsp; **Opzionale** (*parziale*): È possibile la sua assenza, cioè potrebbe non esistere in qualche istanza.<br>&nbsp; **Obbligatorio** (*totale*): È l’opposto di opzionale deve sempre essere presente un suo valore in ogni istanza.<br>&nbsp; **Costante** (*statico*): I valori non possono essere cambiati per tutti il“ciclo di vita” dell’attributo.<br>&nbsp; **Modificabile** (dinamico): È l’opposto di costante, cioè i suoi valori possono venire modificati.<br>&nbsp; **Calcolato**: Il valore è calcolato con un algoritmo.<br>&nbsp; **Esplicito**: È l’opposto di calcolato. **Unico** (*univoco*): Tutte le istanze della classe hanno valore diverso.<br>&nbsp; **Generico** (*multivalore*): È l’opposto di unico.<br>&nbsp; **Temporale**: Alcuni attributi hanno una validità temporale,cioè dopo un certo tempo non hanno più significatività se non per l’archivio storico.",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
@@ -82,14 +75,14 @@ const cardData = [
         section: "Le basi 3: Tipologia dei dati",
         id: "basi-3.2",
         title: "I vincoli degli attributi",
-        text: "I **vincoli** servono a controllare i valori inseriti nel DB. Non hanno una rappresentazione grafica nel modello E-R, ma sono descritti a parte. Si possono dividere in due tipi: **statici** e **dinamici**. I *vincoli statici* vengono verificati solo all'insermento del DB (per esempio dei codici composti calcolabili a partire da altri dati). Invece i *vincoli dinamici* vendono controllati periodicamente (per esempio la scadenza di un prodotto). Gli attibuti possono essere validati (conrollati) sia in fase di caricamento dei dati che in fase di aggiornamento; in fase di interrogazione; periodicamente per quegli attributi che hanno vincoli dinamici.",
+        text: "I **vincoli** servono a controllare i valori inseriti nel DB. Non hanno una rappresentazione grafica nel modello E-R, ma sono descritti a parte. Si possono dividere in due tipi: **statici** e **dinamici**. I *vincoli statici* vengono verificati solo all'inserimento del DB (per esempio dei codici composti calcolabili a partire da altri dati). Invece i *vincoli dinamici* vendono controllati periodicamente (per esempio la scadenza di un prodotto). Gli attribuiti possono essere validati (controllati) sia in fase di caricamento dei dati che in fase di aggiornamento; in fase di interrogazione; periodicamente per quegli attributi che hanno vincoli dinamici.",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Le basi 3: Tipologia dei dati",
         id: "basi-3.3",
         title: "Inclusione degli attributi nel diagramma E-R",
-        text: "Per ogni attributo bosogna quindi individuare:<br>• il formato, che indica il tipo di valori che assume;<br>• la dimensione, che è un numero che indica la quantità massima di caratteri o cifre inseribili e il suo dominio;<br>• l’opzionalità, che indica la possibilità di non essere sempre valorizzato:<br><span style='white-space: pre;'>     </span>- l’attributo è obbligatorio se deve avere un valore non nullo (per esempio il nome di una persona);<br><span style='white-space: pre;'>     </span>  - l’attributo è facoltativo se sono accettabili valori nulli (per esempio il titolo di studio di una persona)",
+        text: "Per ogni attributo bisogna quindi individuare:<br>• il formato, che indica il tipo di valori che assume;<br>• la dimensione, che è un numero che indica la quantità massima di caratteri o cifre inseribili e il suo dominio;<br>• l’opzionalità, che indica la possibilità di non essere sempre valorizzato:<br><span style='white-space: pre;'>     </span>- l’attributo è obbligatorio se deve avere un valore non nullo (per esempio il nome di una persona);<br><span style='white-space: pre;'>     </span>  - l’attributo è facoltativo se sono accettabili valori nulli (per esempio il titolo di studio di una persona)",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
@@ -110,14 +103,14 @@ const cardData = [
         section: "Le basi 4: Le chiavi",
         id: "basi-4.2",
         title: "Altri tipi di chiavi - Artificiali",
-        text: "Nel caso in cui non sia possibile individuare una chiave primaria si può ricorrere ad una **chiave artificiale** (o *seriale*), per esempio nei seguenti casi:<br>• nessun attributo ha tutte le proprietà di una chiave primaria;<br>• le chiavi candidate possono creare problemi nel tempo;<br>• la chiave primaria è grande e complessa;<br>• ci sono problemi di identificazione.<br>Una *chiave artificiale* non è altro che un ID, un identificativo progressivo assegnato artificialmente ad ogni istanza dell'entità. Normakmente il loro nome è preceduto dal suffisso *ID_*.",
+        text: "Nel caso in cui non sia possibile individuare una chiave primaria si può ricorrere ad una **chiave artificiale** (o *seriale*), per esempio nei seguenti casi:<br>• nessun attributo ha tutte le proprietà di una chiave primaria;<br>• le chiavi candidate possono creare problemi nel tempo;<br>• la chiave primaria è grande e complessa;<br>• ci sono problemi di identificazione.<br>Una *chiave artificiale* non è altro che un ID, un identificativo progressivo assegnato artificialmente ad ogni istanza dell'entità. Normalmente il loro nome è preceduto dal suffisso *ID_*.",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Le basi 4: Le chiavi",
         id: "basi-4.3",
         title: "Altri tipi di chiavi - Composte",
-        text: "Nel caso in cui la scelta di una chiave artificiale non sia ottimale, si può ricorrere alle **chiaivi composte**. Una chiave composta è formata da due o più attributi, che messi insieme abbiano le caratteristiche di una chiave primaria.<br>Se si ha un'entià detta debole (ovvero che dipende da un'altra entità per esestere) si può avere una migrazione della chiave primaria dall'entità forte a quella debole. In questo modo l'entità debole avrà una chiave composta con la chiave primaria migrata dall'entità forte.",
+        text: "Nel caso in cui la scelta di una chiave artificiale non sia ottimale, si può ricorrere alle **chiavi composte**. Una chiave composta è formata da due o più attributi, che messi insieme abbiano le caratteristiche di una chiave primaria.<br>Se si ha un'entità detta debole (ovvero che dipende da un'altra entità per esistere) si può avere una migrazione della chiave primaria dall'entità forte a quella debole. In questo modo l'entità debole avrà una chiave composta con la chiave primaria migrata dall'entità forte.",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
@@ -131,7 +124,7 @@ const cardData = [
         section: "Le basi 4: Le chiavi",
         id: "basi-4.5",
         title: "Lo schema relazionale",
-        text: "Lo **schema relazionale** è un modo sintetico per rappresentare un'entità.<br>Lo schema relazionale può essere scritto in più forme:<br>> **Utente** (Nome , Congome, COD_Fiscale (pk), Nazionalità (fk))<br>Oppure:<br>> **Utente** (Nome, Congome, **COD_Fiscale**, Nazionalità *)<br>Oppure:<br>> **Utente** (Nome {string(30)}, Congome {string(30)}, **COD_Fiscale** {string(16)}, *Nazionalità * {string(2)}*<br>È importante sottolineare la differenza tra **modello concettuale** e **logico**. Il *modello concettuale* consiste nella rappresentazione del DB attraverso il modello E-R, quindi a livello di idea. Invece il *modello logico* è l'implementazione del progetto E-R in tabelle.",
+        text: "Lo **schema relazionale** è un modo sintetico per rappresentare un'entità.<br>Lo schema relazionale può essere scritto in più forme:<br>> **Utente** (Nome , Cognome, COD_Fiscale (pk), Nazionalità (fk))<br>Oppure:<br>> **Utente** (Nome, Cognome, **COD_Fiscale**, Nazionalità *)<br>Oppure:<br>> **Utente** (Nome {string(30)}, Cognome {string(30)}, **COD_Fiscale** {string(16)}, *Nazionalità * {string(2)}*<br>È importante sottolineare la differenza tra **modello concettuale** e **logico**. Il *modello concettuale* consiste nella rappresentazione del DB attraverso il modello E-R, quindi a livello di idea. Invece il *modello logico* è l'implementazione del progetto E-R in tabelle.",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
@@ -145,46 +138,46 @@ const cardData = [
         section: "Le relazioni nel modello E-R",
         id: "basi-5.2",
         title: "Classificazione delle relazioni - Grado",
-        text: "Le relaioni possono essere divise in base a diversi criteri:<br>• **grado**<br>• **cardinalità**<br>• direzione<br>• **gerarchia**<br><br>Il **grado** di una relazione indica il *numero di entità associate alla relazione*. In generale una relazione di grado *n* si definisce *n-aria* (una relazione di grado 2 si definisce binaria, ecc). Una relazione che coinvolge una sola entità è detta **relazione ricorsiva** (per esempio *il capo ufficio e i dipendenti dell'ufficio*)",
+        text: "Le relazioni possono essere divise in base a diversi criteri:<br>• **grado**<br>• **cardinalità**<br>• direzione<br>• **gerarchia**<br><br>Il **grado** di una relazione indica il *numero di entità associate alla relazione*. In generale una relazione di grado *n* si definisce *n-aria* (una relazione di grado 2 si definisce binaria, ecc). Una relazione che coinvolge una sola entità è detta **relazione ricorsiva** (per esempio *il capo ufficio e i dipendenti dell'ufficio*)",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Le relazioni nel modello E-R",
         id: "basi-5.3",
         title: "Classificazione delle relazioni - Cardinalità",
-        text: "Per ogni entità che partecipa a un’associazione bisogna indicare il numero minimo e massimo di istanze della relazione a cui un’istanza dell’entità può partecipare. L’indicazione del numero delle istanze delle entità associate a una relazione prende nome di **cardinalità**. Le cardinalità massime sono ricondicibili a questi tre casi:<br>• relazioni **1-a-1** prevedono che ogni istanza di un'entità sia associata al massimo un'istanza della seconda entità messa in relazione (**1, 1**)<br>• relazioni **1-a-molti** prevedono che ogni istanza di un'entità sia associata a zero, una o più istanze della seconda entità messa in relazione, ma ogni istanza della seconda entità sia messa in relazione al massimo con un'istanza della prima entità (**1, n**)<br>• relazioni **molti-a-molti** prevedono che ogni istanza di un'entità possa essere associata a zero, una o più istanze della seconda entità messa in relazione e vice versa (**1, 1**)",
+        text: "Per ogni entità che partecipa a un’associazione bisogna indicare il numero minimo e massimo di istanze della relazione a cui un’istanza dell’entità può partecipare. L’indicazione del numero delle istanze delle entità associate a una relazione prende nome di **cardinalità**. Le cardinalità massime sono riconducibili a questi tre casi:<br>• relazioni **1-a-1** prevedono che ogni istanza di un'entità sia associata al massimo un'istanza della seconda entità messa in relazione (**1, 1**)<br>• relazioni **1-a-molti** prevedono che ogni istanza di un'entità sia associata a zero, una o più istanze della seconda entità messa in relazione, ma ogni istanza della seconda entità sia messa in relazione al massimo con un'istanza della prima entità (**1, n**)<br>• relazioni **molti-a-molti** prevedono che ogni istanza di un'entità possa essere associata a zero, una o più istanze della seconda entità messa in relazione e vice versa (**1, 1**)",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Le relazioni nel modello E-R",
         id: "basi-5.4",
         title: "Classificazione delle relazioni - Vincoli di cardinalità",
-        text: "Inoltre è importante specificare i vincoli di cardinalità, ovvero una coppia di numeri interi, che indica il numero minimo e massimo di istanze della relazione a cui un'stanza della relazione può partecipare. Lacardinalità minima e massima vine indicata con (n, m) dove n indica l'esistenza (può essere 0: opzionale o 1: obbligatoria) e m indica la molteplicità, ovvero il numero massimo di istanze che partecipano ad una relazione (può essere 1: una istanza, VALORE_INTERO (> 1): numero massimo di istanze o n: senza liminti).",
+        text: "Inoltre è importante specificare i vincoli di cardinalità, ovvero una coppia di numeri interi, che indica il numero minimo e massimo di istanze della relazione a cui un'stanza della relazione può partecipare. La cardinalità minima e massima vine indicata con (n, m) dove n indica l'esistenza (può essere 0: opzionale o 1: obbligatoria) e m indica la molteplicità, ovvero il numero massimo di istanze che partecipano ad una relazione (può essere 1: una istanza, VALORE_INTERO (> 1): numero massimo di istanze o n: senza limiti).",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Le relazioni nel modello E-R",
         id: "basi-5.5",
         title: "Relazione gerarchica - 1",
-        text: "Corsidera:<br><span style='white-space: pre;'>     </span> **ALFA** - padre (superclasse)<br><span style='white-space: pre;'>        </span> ↑<br><span style='white-space: pre;'>     </span> **beta** - figlio (sottoclasse)<br>• Beta è detta sottoclasse o specializzazione di Alfa.<br>• Alfa è detta superclasse o generalizzazione di Beta.<br>Nelle gerarchie sono presenti due vincoli (o proprietà).<br>• Vincolo di struttura: se Beta è sottoclasse di Alfa, Beta ha tutti gli attributi di Alfa e partecipa a tutte le associazioni cui partecipa Alfa(ereditarietà); questo non esclude che Beta possa avere altri attributi e partecipare ad altre associazioni<br>• Vincolo di insieme: se Beta è specializzazione di Alfa, ogni oggetto di Beta è anche un oggetto di Alfa(cioè Beta è un sottoinsieme di Alfa)",
+        text: "Considera:<br><span style='white-space: pre;'>     </span> **ALFA** - padre (superclasse)<br><span style='white-space: pre;'>        </span> ↑<br><span style='white-space: pre;'>     </span> **beta** - figlio (sottoclasse)<br>• Beta è detta sottoclasse o specializzazione di Alfa.<br>• Alfa è detta superclasse o generalizzazione di Beta.<br>Nelle gerarchie sono presenti due vincoli (o proprietà).<br>• Vincolo di struttura: se Beta è sottoclasse di Alfa, Beta ha tutti gli attributi di Alfa e partecipa a tutte le associazioni cui partecipa Alfa(ereditarietà); questo non esclude che Beta possa avere altri attributi e partecipare ad altre associazioni<br>• Vincolo di insieme: se Beta è specializzazione di Alfa, ogni oggetto di Beta è anche un oggetto di Alfa (cioè Beta è un sottoinsieme di Alfa)",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Le relazioni nel modello E-R",
         id: "basi-5.6",
         title: "Relazione gerarchica - 1",
-        text: "Le generalizzazionisi caratterizzano quindi per “due dimensioni indipendenti”:<br>1. Confronto fra unione delle specializzazioni e classe generalizzata:<br><span style='white-space: pre;'>     </span>- totale, se la classe generalizzata è l’unione delle specializzazioni;<br><span style='white-space: pre;'>     </span>- parziale, se la classe generalizzata contiene l’unione delle specializzazioni;<br>2. Confronto frale classi specializzate:<br><span style='white-space: pre;'>     </span>- esclusiva, se le specializzazioni sono fra loro disgiunte;<br><span style='white-space: pre;'>     </span>- sovrapposta (overlapped), se può esistere una intersezione non vuota fra le specializzazioni.",
+        text: "Le generalizzazioni si caratterizzano quindi per “due dimensioni indipendenti”:<br>1. Confronto fra unione delle specializzazioni e classe generalizzata:<br><span style='white-space: pre;'>     </span>- totale, se la classe generalizzata è l’unione delle specializzazioni;<br><span style='white-space: pre;'>     </span>- parziale, se la classe generalizzata contiene l’unione delle specializzazioni;<br>2. Confronto fra le classi specializzate:<br><span style='white-space: pre;'>     </span>- esclusiva, se le specializzazioni sono fra loro disgiunte;<br><span style='white-space: pre;'>     </span>- sovrapposta (overlapped), se può esistere una intersezione non vuota fra le specializzazioni.",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
-        section: "Dizzionario",
+        section: "Dizionario",
         id: "man-frontend-backend",
         title: "Frontend e backend",
         text: "In informatica il **forntend** è quella componente software che è *visibile all'utente* e con la quale interagisce. Al *forntend* è associato il **backend**, che consiste nella parte di un'infrastruttura software *invisibile all'utente*, ma che opera nel background permettendo il funzionamento di tutto il sistema.<br><span style='white-space: pre;'>     </span> Maggiori info su [Wikipedia](https://it.wikipedia.org/wiki/Front-end_e_back-end).",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
-        section: "Dizzionario",
+        section: "Dizionario",
         id: "man-valore-null",
         title: "Valore NULL",
         text: "In informatica una variabile o valore non inizializzato, si dice che ha valore ***null***. È importante notare che ***null*** è diverso da **zero**, che è una *quantità definita*.<br><span style='white-space: pre;'>     </span> Maggiori info su [Wikipedia](https://it.wikipedia.org/wiki/NULL)",

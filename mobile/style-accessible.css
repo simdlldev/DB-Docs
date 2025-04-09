@@ -1,0 +1,372 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    background-image: url('backgroung.jpg'); /* Imposta l'immagine di sfondo */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.site-header {
+    background-color: rgba(10, 51, 100, 0.4); /* Sfondo leggermente trasparente */
+    color: white;
+    padding: 20px;
+    text-align: left; /* Allinea il titolo a sinistra */
+    margin-bottom: 20px;
+    border-radius: 0 0 20px 20px;
+    display: flex;
+    justify-content: space-between; /* Spazia gli elementi orizzontalmente */
+    align-items: flex-start; /* Allinea gli elementi verticalmente all'inizio */
+    flex-direction: row; /* Imposta la direzione degli elementi interna a riga */
+    backdrop-filter: blur(5px);
+    position: sticky; /* Rende l'header fisso */
+    top: 0; /* Lo fissa in cima alla viewport */
+    z-index: 100; /* Assicura che non venga coperto da altri elementi */
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 2em; /* Puoi regolare la dimensione del titolo */
+}
+
+.site-header h3 {
+    margin: 5px 0 0 0; /* Spazio sopra il testo "by simdll" */
+    font-size: 1em; /* Puoi regolare la dimensione del sottotitolo */
+    color: rgba(255, 255, 255, 0.8); /* Un po' più trasparente */
+}
+
+.header-left {
+    display: flex;
+    flex-direction: column; /* Titolo e "by simdll" in colonna a sinistra */
+    align-items: flex-start;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    /* margin-top: 15px; /* Rimuovi il margine superiore */
+    /* align-self: flex-end; /* Rimuovi l'allineamento a destra */
+}
+
+#search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    margin-right: 5px;
+    width: 150px; /* Larghezza ridotta */
+}
+
+.search-icon {
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+markblue {
+  background-color: rgb(10, 100, 255);
+  color: white; 
+  padding: 3px 3px;
+  border-radius: 10px;
+}
+
+code {
+  background-color: rgb(100, 100, 150); 
+  color: white;
+  padding: 3px 3px;
+  border-radius: 10px;
+}
+
+h2 {
+    background-color: rgba(10, 51, 100, 0.5); 
+    color: rgba(255, 255, 255, 1); 
+    padding: 10px 15px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    display: inline-block; 
+    border-bottom: none;
+    font-size: 40px; /* <------------------------------------------- impostazione di accessibilità!!!!!!!!*/
+    border: 1px solid #eee; /* <------------------------------------------- impostazione di accessibilità!!!!!!!!*/
+    backdrop-filter: blur(5px);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(calc(100% - 10px), 1fr)); /* Massimo 3 colonne */
+    gap: 20px;
+}
+
+.card {
+    background-color: rgba(249, 249, 249, 0.5); 
+    border: 1px solid #eee;/* <------------------------------------------- impostazione di accessibilità!!!!!!!!*/
+    padding: 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.card h3 {
+    color: rgba(255, 255, 255, 1); 
+    margin-top: 0;
+    font-size: 30px; /* <------------------------------------------- impostazione di accessibilità!!!!!!!!*/
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: rgba(255, 255, 255, 1); 
+    line-height: 1.6;
+    font-size: 25px; /* <------------------------------------------- impostazione di accessibilità!!!!!!!!*/
+    border-bottom: none;
+}
+
+.card p img { 
+    border-radius: 10px;
+    max-width: 20%;
+    max-height: auto;
+    border-bottom: none;
+}
+
+a:link {
+  color: rgba(230, 230, 255, 1); /* Colore del link non visitato */
+}
+
+a:visited {
+  color: rgba(200, 200, 255, 1); /* Colore del link visitato */
+}
+
+a:hover {
+  color: rgba(50, 50, 50, 1); /* Colore quando il mouse è sopra il link */
+}
+
+a:active {
+  color: green; /* Colore mentre il link viene cliccato */
+}
+
+.card-link-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.card-link-button:hover {
+    background-color: #0056b3;
+}
+
+.terms-link {
+    color: rgba(200, 200, 255, 1);
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.terms-link:hover {
+    color: rgba(50, 50, 50, 1);
+}
+
+/* Stili per il pop-up (invariati) */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 75%;
+}
+
+.popup-content h2 {
+    background-color: white;
+    color: black;
+    padding: 0px 0px;
+    border-radius: 0px;
+    margin-bottom: 0px;
+    display: inline-block; 
+    border-bottom: none;
+    backdrop-filter: blur(0px);
+    color: #333;
+    margin-top: 0;
+}
+
+.popup-content p {
+    color: #555;
+    margin-bottom: 15px;
+}
+
+#terms-text {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+#accept-terms {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#accept-terms:hover {
+    background-color: #0056b3;
+}
+
+#welcome-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Assicurati che sia sopra il popup dei termini */
+}
+
+#welcome-popup .popup-content {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+#welcome-text {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+    overflow-y: auto;
+    max-height: 200px;
+}
+
+#close-welcome {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#close-welcome:hover {
+    background-color: #4cae4c;
+}
+
+.site-footer {
+    background-color: rgba(51, 51, 51, 0.8); /* Sfondo leggermente trasparente */
+    color: white;
+    text-align: center;
+    padding: 10px 20px; /* Aggiunto un po' di padding laterale */
+    margin-top: 20px;
+    border-radius: 8px 8px 0 0;
+    font-size: 0.9em;
+    display: flex; /* Abilita Flexbox per il footer */
+    justify-content: space-between; /* Spazia gli elementi (testo a sinistra, switch a destra) */
+    align-items: center; /* Allinea verticalmente gli elementi al centro */
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.accessibility-switch {
+    display: flex;
+    align-items: center;
+    /* margin-left: 20px; /* Rimuovi il margine sinistro */
+}
+
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+.accessibility-label {
+    margin-left: 8px;
+    color: white; /* Stesso colore del testo del footer */
+    font-size: 20px; /* Stessa dimensione del testo del footer */
+}
+
+/* Stili per l'accessibilità */
+body.accessibility-mode div.container div.card.accessibility-mode {
+    border: 1px solid #eee !important;
+}
+
+body.accessibility-mode .card p,
+body.accessibility-mode .card h3 {
+    font-size: 1.2em !important; /* Aumento del 20% (1em è la dimensione base) */
+}

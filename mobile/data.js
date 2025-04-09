@@ -12,7 +12,7 @@ const cardData = [
         section: "Informazioni Generali",
         id: "info",
         title: "Info",
-        text: "Questa pagina contiene tutta la documentazione utile a comprendere la logica della progettazione dei database (DB) con il modello E-R. La documentazione inizia dalla sezione Le basi 1: Cos'è un DB?. È possibile trovare il significato e la spiegazione di alcuni termini (indicati così: [Dizionario<sup>{cos'è?}</sup>](#sezione-dizionario)) nel Dizionario. È possibile accedere alla documentazione a questo link: [**https://bit.ly/mobile-DB_Docs**](https://bit.ly/mobile-DB_Docs)",
+        text: "Questa pagina contiene tutta la documentazione utile a comprendere la logica della progettazione dei database (DB) con il modello E-R. La documentazione inizia dalla sezione Le basi 1: Cos'è un DB?. È possibile trovare il significato e la spiegazione di alcuni termini (indicati così: [Dizionario<sup>{cos'è?}</sup>](#sezione-dizionario)) nel Dizionario.<br>È possibile accedere alla documentazione a questo link: [**bit.ly/web-DB_Docs**](https://bit.ly/mobile-DB_Docs) **|** Fallback link: [t.ly/gEcYs](https://t.ly/gEcYs)",
         style: { backgroundColor: 'rgba(150, 255, 150, 0.5)' }
     },
     {
@@ -68,7 +68,7 @@ const cardData = [
         section: "Le basi 3: Tipologia dei dati",
         id: "basi-3.1",
         title: "Dominio degli attributi",
-        text: "Gli **attributi** devono avere un **dominio**, ovvero un *insieme di valori* che il ogni componente dell'*istanza* può assumere. Il dominio può essere scomposto in: tipo di dato, lunghezza, intervallo e valore di default. Se un attrubuto è opzionale, il campo valorizzato dell'istanza dovrà essere impostato su [null<sup>{cos'è?}</sup>](#valore-null).",
+        text: "Gli **attributi** devono avere un **dominio**, ovvero un *insieme di valori* che il ogni componente dell'*istanza* può assumere. Il dominio può essere scomposto in: tipo di dato, lunghezza, intervallo e valore di default. Se un attrubuto è opzionale, il campo valorizzato dell'istanza dovrà essere impostato su [null<sup>{cos'è?}</sup>](#man-valore-null).",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
@@ -96,7 +96,7 @@ const cardData = [
         section: "Le basi 4: Le chiavi",
         id: "basi-4.1",
         title: "Cos'è un attributo chiave? - Chiavi primarie",
-        text: "Un attributo può essere definito **attributo chiave** (o semplicemente **chiave**) solo se soddisfa le seguenti caratteristiche:<br>• è obbligatorio, unico ed esplicito;<br>• non è ammesso il valore [null<sup>{cos'è}</sup>](#valore-null);<br>• non è modificabile.<br>In una entità possono anche essere presenti più attributi con caratteristiche tali da renderli possibili campi chiave: ogni chiave potenziale prende il nome di *chiave candidata*.<br>La chiave che viene scelta come riferimento è detta **chiave primaria**, indicata con ***(pk)*** (*primary key*)",
+        text: "Un attributo può essere definito **attributo chiave** (o semplicemente **chiave**) solo se soddisfa le seguenti caratteristiche:<br>• è obbligatorio, unico ed esplicito;<br>• non è ammesso il valore [null<sup>{cos'è}</sup>](#man-valore-null);<br>• non è modificabile.<br>In una entità possono anche essere presenti più attributi con caratteristiche tali da renderli possibili campi chiave: ogni chiave potenziale prende il nome di *chiave candidata*.<br>La chiave che viene scelta come riferimento è detta **chiave primaria**, indicata con ***(pk)*** (*primary key*)",
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {

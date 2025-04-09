@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const siteFooter = document.querySelector('.site-footer');
 
-    // Popup di benvenuto
     const welcomePopup = document.createElement('div');
     welcomePopup.id = 'welcome-popup';
     welcomePopup.classList.add('popup');
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     welcomePopup.appendChild(welcomeContent);
     document.body.appendChild(welcomePopup);
 
-    // Funzione per caricare e visualizzare il Markdown
     function loadMarkdown(filePath, elementId) {
         fetch(filePath)
             .then(response => response.text())
@@ -38,11 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Carica i termini d'uso dal file Markdown
     loadMarkdown('terms.md', 'terms-text');
     loadMarkdown('welcome.md', 'welcome-text');
 
-    // Funzioni per gestire la visualizzazione dei popup una volta al giorno
     function shouldShowPopup(popupName) {
         const lastShown = localStorage.getItem(`${popupName}_lastShown`);
         const today = new Date().toDateString();
@@ -53,13 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem(`${popupName}_lastShown`, new Date().toDateString());
     }
 
-    // Mostra il pop-up dei termini se non accettato e se non mostrato oggi
     const termsAccepted = localStorage.getItem('termsAccepted') === 'true';
     if (!termsAccepted && shouldShowPopup('terms')) {
         termsPopup.style.display = 'flex';
     }
 
-    // Gestisci il click sul pulsante "Accetta" dei termini
     acceptButton.addEventListener('click', function() {
         termsPopup.style.display = 'none';
         localStorage.setItem('termsAccepted', 'true');
@@ -70,19 +64,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Mostra il pop-up di benvenuto all'apertura se i termini sono accettati e non è stato mostrato oggi
     if (termsAccepted && shouldShowPopup('welcome')) {
         welcomePopup.style.display = 'flex';
         markPopupAsShown('welcome');
     }
 
-    // Gestisci il click sul pulsante "Inizia a Esplorare" del popup di benvenuto
     closeWelcomeButton.addEventListener('click', function() {
         welcomePopup.style.display = 'none';
         markPopupAsShown('welcome');
     });
 
-    // Aggiungi il link ai termini d'uso nel footer
     const termsLink = document.createElement('span');
     termsLink.textContent = 'Termini d\'Uso';
     termsLink.classList.add('terms-link');
@@ -99,12 +90,10 @@ document.addEventListener('DOMContentLoaded', function() {
     contactInfo.appendChild(termsLink);
     contactInfo.appendChild(separator);
 
-    // Gestione switch accessibilità
     const accessibilityToggle = document.getElementById('accessibility-toggle');
     let mainStylesheet;
     let accessibilityStylesheet;
 
-    // Funzione per caricare il foglio di stile
     function loadStylesheet(href, id) {
         const stylesheet = document.createElement('link');
         stylesheet.rel = 'stylesheet';
@@ -114,7 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return stylesheet;
     }
 
-    // Funzione per rimuovere il foglio di stile
     function removeStylesheet(id) {
         const stylesheet = document.getElementById(id);
         if (stylesheet) {
@@ -122,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Verifica se la modalità accessibilità era attiva nell'ultima sessione
     const isAccessibilityModeActive = localStorage.getItem('accessibilityMode') === 'true';
     if (isAccessibilityModeActive) {
         removeStylesheet('main-style');
@@ -132,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mainStylesheet = loadStylesheet('style.css', 'main-style');
     }
 
-    // Gestisci il cambiamento dello switch di accessibilità
     accessibilityToggle.addEventListener('change', function() {
         if (this.checked) {
             removeStylesheet('main-style');
@@ -144,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('accessibilityMode', this.checked);
     });
 
-    // Funzione per creare una card HTML (invariata)
     function createCard(cardData) {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -176,7 +161,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return card;
     }
 
-    // Funzione per popolare le sezioni con le card (invariata)
     function populateSections(data) {
         const sections = {};
         data.forEach(item => {
@@ -197,12 +181,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Carica i dati e popola le sezioni (invariata)
     if (typeof cardData !== 'undefined') {
         populateSections(cardData);
     }
 
-    // Funzione per la ricerca (invariata)
     searchInput.addEventListener('input', function() {
         const searchTerm = searchInput.value.toLowerCase();
         const cards = document.querySelectorAll('.card');
@@ -218,13 +200,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Gestione degli ID per gli URL (invariata)
     function handleAnchor() {
         const hash = window.location.hash.substring(1);
         if (hash) {
             const targetCard = document.getElementById(hash);
             if (targetCard) {
-                targetCard.scrollIntoView({ behavior: 'smooth' });
+                const headerHeight = document.querySelector('.site-header').offsetHeight;
+                window.scrollTo({
+                    top: targetCard.offsetTop - headerHeight,
+                    behavior: 'smooth'
+                });
                 return;
             }
 
@@ -235,11 +220,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Esegui handleAnchor all'apertura della pagina e quando cambia l'hash nell'URL (invariata)
     window.addEventListener('load', handleAnchor);
     window.addEventListener('hashchange', handleAnchor);
 
-    // Scorciatoia da tastiera per la ricerca (invariata)
     document.addEventListener('keydown', function(event) {
         if ((event.ctrlKey || event.metaKey) && event.key === 's') {
             event.preventDefault();
@@ -247,7 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Scorciatoia da tastiera per cancellare la ricerca (invariata)
     searchInput.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             searchInput.value = '';

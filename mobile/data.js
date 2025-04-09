@@ -12,7 +12,7 @@ const cardData = [
         section: "Informazioni Generali",
         id: "info",
         title: "Info",
-        text: "Questa pagina contiene tutta la documentazione utile a comprendere la logica della progettazione dei database (DB) con il modello E-R. La documentazione inizia dalla sezione Le basi 1: Cos'è un DB?. È possibile trovare il significato e la spiegazione di alcuni termini (indicati così: [Dizionario<sup>{cos'è?}</sup>](#sezione-dizionario)) nel Dizionario.<br>È possibile accedere alla documentazione a questo link: [**bit.ly/web-DB_Docs**](https://bit.ly/mobile-DB_Docs) **|** Fallback link: [t.ly/gEcYs](https://t.ly/gEcYs)<br>Versione desktop: [bit.ly/web-DB_Doc](https://bit.ly/web-DB_Doc)",
+        text: "Questa pagina contiene tutta la documentazione utile a comprendere la logica della progettazione dei database (DB) con il modello E-R. La documentazione inizia dalla sezione Le basi 1: Cos'è un DB?. È possibile trovare il significato e la spiegazione di alcuni termini (indicati così: [Dizionario<sup>{cos'è?}</sup>](#sezione-dizionario)) nel Dizionario.<br>È possibile accedere alla documentazione a questo link: [**bit.ly/web-DB_Docs**](https://bit.ly/mobile-DB_Docs) **|** Fallback link: [t.ly/gEcYs](https://t.ly/gEcYs)<br>Versione desktop: [bit.ly/web-DB_Docs](https://bit.ly/web-DB_Docs)",
         style: { backgroundColor: 'rgba(150, 255, 150, 0.5)' }
     },
     {

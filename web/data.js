@@ -3,7 +3,7 @@ const cardData = [
         section: "Introduzione",
         id: "welcome",
         title: "Benvenuti",
-        text: "**DB Docs** è appena trasferito su `GitHub` per continuare a proporti contenuti di qualità e per offrire un'esperienza migliore",
+        text: "**DB Docs** è appena stato trasferito su `GitHub` per continuare a proporti contenuti di qualità e per offrire un'esperienza migliore",
         style: { backgroundColor: 'rgba(255, 150, 150, 0.5' },
         //linkUrl: "https://goo.gle",
         //linkText: "Google"
@@ -12,7 +12,7 @@ const cardData = [
         section: "Informazioni Generali",
         id: "info",
         title: "Info",
-        text: "Questa pagina contiene tutta la documentazione utile a comprendere la logica della progettazione dei database (DB) con il modello E-R. La documentazione inizia dalla sezione Le basi 1: Cos'è un DB?. È possibile trovare il significato e la spiegazione di alcuni termini (indicati così: [Dizionario<sup>{cos'è?}</sup>](#sezione-dizionario)) nel Dizionario.<br>È possibile accedere alla documentazione a questo link: [**bit.ly/web-DB_Docs**](https://bit.ly/web-DB_Docs) **|** Fallback link: [t.ly/0yDmY](https://t.ly/0yDmY)<br>Versione mobile: [bit.ly/mobile-DB_Docs](https://bit.ly/mobile-DB_Docs)",
+        text: "Questa pagina contiene tutta la documentazione utile a comprendere la logica della progettazione dei database (DB) con il modello E-R. La documentazione inizia dalla sezione Le basi 1: Cos'è un DB?. È possibile trovare il significato e la spiegazione di alcuni termini (indicati così: [Dizionario<sup>{cos'è?}</sup>](#sezione-dizionario)) nel Dizionario.<br>È possibile accedere alla documentazione a questo link: [**bit.ly/db_docs-web**](https://bit.ly/db_docs-web) **|** Fallback link: [t.ly/0yDmY](https://t.ly/0yDmY)<br>Versione mobile: [bit.ly/db_docs-mobile](https://bit.ly/db_docs-mobile)",
         style: { backgroundColor: 'rgba(150, 255, 150, 0.5)' }
     },
     {

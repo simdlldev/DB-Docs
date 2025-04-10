@@ -24,25 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     welcomePopup.appendChild(welcomeContent);
     document.body.appendChild(welcomePopup);
 
-    const devicePopup = document.getElementById('device-redirect-popup') || document.createElement('div');
-    if (!devicePopup.id) {
-        devicePopup.id = 'device-redirect-popup';
-        devicePopup.classList.add('popup');
-        const deviceContent = document.createElement('div');
-        deviceContent.classList.add('popup-content');
-        const deviceTitle = document.createElement('h2');
-        const deviceMessage = document.createElement('p');
-        const acceptDeviceButton = document.createElement('button');
-        const rejectDeviceButton = document.createElement('button');
-
-        deviceContent.appendChild(deviceTitle);
-        deviceContent.appendChild(deviceMessage);
-        deviceContent.appendChild(acceptDeviceButton);
-        deviceContent.appendChild(rejectDeviceButton);
-        devicePopup.appendChild(deviceContent);
-        document.body.appendChild(devicePopup);
-    }
-
     function loadMarkdown(filePath, elementId) {
         fetch(filePath)
             .then(response => response.text())
@@ -92,6 +73,42 @@ document.addEventListener('DOMContentLoaded', function() {
         welcomePopup.style.display = 'none';
         markPopupAsShown('welcome');
     });
+
+    function isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    if (isMobileDevice()) {
+        const deviceRedirectPopup = document.createElement('div');
+        deviceRedirectPopup.id = 'device-redirect-popup';
+        deviceRedirectPopup.classList.add('popup');
+
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content');
+
+        const message = document.createElement('p');
+        message.textContent = 'Sembra che tu stia utilizzando un dispositivo mobile. Vuoi visualizzare la versione mobile del sito?';
+
+        const goToMobileButton = document.createElement('button');
+        goToMobileButton.textContent = 'Vai alla versione mobile';
+        goToMobileButton.addEventListener('click', function() {
+            window.location.href = 'https://simdlldev.github.io/DB-Docs/mobile/main.html';
+        });
+
+        const stayHereButton = document.createElement('button');
+        stayHereButton.textContent = 'Rimani qui';
+        stayHereButton.addEventListener('click', function() {
+            deviceRedirectPopup.style.display = 'none';
+        });
+
+        popupContent.appendChild(message);
+        popupContent.appendChild(goToMobileButton);
+        popupContent.appendChild(stayHereButton);
+        deviceRedirectPopup.appendChild(popupContent);
+        document.body.appendChild(deviceRedirectPopup);
+
+        deviceRedirectPopup.style.display = 'flex';
+    }
 
     const termsLink = document.createElement('span');
     termsLink.textContent = 'Termini d\'Uso';
@@ -224,7 +241,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (hash) {
             const targetCard = document.getElementById(hash);
             if (targetCard) {
-                targetCard.scrollIntoView({ behavior: 'smooth' });
+                const headerHeight = document.querySelector('.site-header').offsetHeight;
+                window.scrollTo({
+                    top: targetCard.offsetTop - headerHeight,
+                    behavior: 'smooth'
+                });
                 return;
             }
 
@@ -254,57 +275,4 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
-
-    function isMobileOrTablet() {
-        const userAgent = navigator.userAgent.toLowerCase();
-        return /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|rim)|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|mobi|tablet|ipad|playbook|silk/i.test(userAgent);
-    }
-
-    function isTablet() {
-        const userAgent = navigator.userAgent.toLowerCase();
-        return /(ipad|tablet|(android(?!.*mobile))|(windows(?!.*phone)(?!.*mobile))|kindle|playbook|silk)/i.test(userAgent);
-    }
-
-    const mobileUrl = 'https://simdlldev.github.io/DB-Docs/mobile/main.html';
-    const desktopUrl = 'https://simdlldev.github.io/DB-Docs/web/main.html';
-
-    const isMobileDevice = isMobileOrTablet();
-    const isTabletDevice = isTablet();
-    const isDesktopDevice = !isMobileDevice && !isTabletDevice;
-    const isOnMobileUrl = window.location.href.includes('/mobile/');
-    const isOnDesktopUrl = window.location.href.includes('/web/');
-
-    if (isMobileDevice || isTabletDevice) {
-        if (isOnDesktopUrl) {
-            deviceTitle.textContent = 'Versione Mobile Ottimizzata Disponibile';
-            deviceMessage.textContent = 'Sembra che tu stia utilizzando un dispositivo mobile. Vuoi passare alla versione ottimizzata per mobile?';
-            acceptDeviceButton.textContent = 'Vai alla Versione Mobile';
-            rejectDeviceButton.textContent = 'Rimani qui';
-            devicePopup.style.display = 'flex';
-
-            acceptDeviceButton.addEventListener('click', function() {
-                window.location.href = mobileUrl;
-            });
-
-            rejectDeviceButton.addEventListener('click', function() {
-                devicePopup.style.display = 'none';
-            });
-        }
-    } else if (isDesktopDevice) {
-        if (isOnMobileUrl) {
-            deviceTitle.textContent = 'Versione Desktop Disponibile';
-            deviceMessage.textContent = 'Stai visualizzando la versione mobile su un dispositivo desktop. Vuoi passare alla versione desktop?';
-            acceptDeviceButton.textContent = 'Vai alla Versione Desktop';
-            rejectDeviceButton.textContent = 'Rimani qui';
-            devicePopup.style.display = 'flex';
-
-            acceptDeviceButton.addEventListener('click', function() {
-                window.location.href = desktopUrl;
-            });
-
-            rejectDeviceButton.addEventListener('click', function() {
-                devicePopup.style.display = 'none';
-            });
-        }
-    }
 });

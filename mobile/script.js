@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const termsAccepted = localStorage.getItem('termsAccepted') === 'true';
-    if (!termsAccepted && shouldShowPopup('terms')) {
+    if (/*!termsAccepted && */shouldShowPopup('terms')) {
         termsPopup.style.display = 'flex';
     }
 

@@ -1,8 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const termsPopup = document.getElementById('terms-popup');
     const acceptButton = document.getElementById('accept-terms');
     const contentContainer = document.getElementById('content-container');
     const searchInput = document.getElementById('search-input');
+    const clearSearchButton = document.getElementById('clear-search');
     const siteFooter = document.querySelector('.site-footer');
 
     const welcomePopup = document.createElement('div');
@@ -50,11 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const termsAccepted = localStorage.getItem('termsAccepted') === 'true';
-    if (/*!termsAccepted && */shouldShowPopup('terms')) {
+    if (shouldShowPopup('terms')) {
         termsPopup.style.display = 'flex';
     }
 
-    acceptButton.addEventListener('click', function() {
+    acceptButton.addEventListener('click', function () {
         termsPopup.style.display = 'none';
         localStorage.setItem('termsAccepted', 'true');
         markPopupAsShown('terms');
@@ -69,52 +70,20 @@ document.addEventListener('DOMContentLoaded', function() {
         markPopupAsShown('welcome');
     }
 
-    closeWelcomeButton.addEventListener('click', function() {
+    closeWelcomeButton.addEventListener('click', function () {
         welcomePopup.style.display = 'none';
         markPopupAsShown('welcome');
     });
 
     function isMobileDevice() {
-        return /Android|webOS|iPhone|iPad|iPod|iOS|iOS|iPadOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    }
-
-    if (isMobileDevice()) {
-        const deviceRedirectPopup = document.createElement('div');
-        deviceRedirectPopup.id = 'device-redirect-popup';
-        deviceRedirectPopup.classList.add('popup');
-
-        const popupContent = document.createElement('div');
-        popupContent.classList.add('popup-content');
-
-        const message = document.createElement('p');
-        message.textContent = 'Sembra che tu stia utilizzando un dispositivo mobile. Vuoi visualizzare la versione mobile del sito?';
-
-        const goToMobileButton = document.createElement('button');
-        goToMobileButton.textContent = 'Vai alla versione mobile';
-        goToMobileButton.addEventListener('click', function() {
-            window.location.href = 'https://simdlldev.github.io/DB-Docs/mobile/main.html';
-        });
-
-        const stayHereButton = document.createElement('button');
-        stayHereButton.textContent = 'Rimani qui';
-        stayHereButton.addEventListener('click', function() {
-            deviceRedirectPopup.style.display = 'none';
-        });
-
-        popupContent.appendChild(message);
-        popupContent.appendChild(goToMobileButton);
-        popupContent.appendChild(stayHereButton);
-        deviceRedirectPopup.appendChild(popupContent);
-        document.body.appendChild(deviceRedirectPopup);
-
-        deviceRedirectPopup.style.display = 'flex';
+        return /Android|webOS|iPhone|iPad|iPod|iOS|iPadOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     }
 
     const termsLink = document.createElement('span');
-    termsLink.textContent = 'Termini d\'Uso';
+    termsLink.textContent = "Termini d'Uso";
     termsLink.classList.add('terms-link');
     termsLink.style.cursor = 'pointer';
-    termsLink.addEventListener('click', function() {
+    termsLink.addEventListener('click', function () {
         termsPopup.style.display = 'flex';
     });
 
@@ -127,16 +96,16 @@ document.addEventListener('DOMContentLoaded', function() {
     contactInfo.appendChild(separator);
 
     const accessibilityToggle = document.getElementById('accessibility-toggle');
-    let mainStylesheet;
-    let accessibilityStylesheet;
 
     function loadStylesheet(href, id) {
-        const stylesheet = document.createElement('link');
-        stylesheet.rel = 'stylesheet';
-        stylesheet.href = href;
-        stylesheet.id = id;
-        document.head.appendChild(stylesheet);
-        return stylesheet;
+        const existing = document.getElementById(id);
+        if (!existing) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            link.id = id;
+            document.head.appendChild(link);
+        }
     }
 
     function removeStylesheet(id) {
@@ -146,25 +115,66 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    const isAccessibilityModeActive = localStorage.getItem('accessibilityMode') === 'true';
-    if (isAccessibilityModeActive) {
-        removeStylesheet('main-style');
-        accessibilityStylesheet = loadStylesheet('style-accessible.css', 'accessible-style');
-        accessibilityToggle.checked = true;
-    } else {
-        mainStylesheet = loadStylesheet('style.css', 'main-style');
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
     }
 
-    accessibilityToggle.addEventListener('change', function() {
-        if (this.checked) {
-            removeStylesheet('main-style');
-            accessibilityStylesheet = loadStylesheet('style-accessible.css', 'accessible-style');
-        } else {
-            removeStylesheet('accessible-style');
-            mainStylesheet = loadStylesheet('style.css', 'main-style');
+    function getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(`${name}=`)) {
+                return cookie.substring(name.length + 1);
+            }
         }
+        return null;
+    }
+
+    function applyStylesheets() {
+        const isAccessibility = localStorage.getItem('accessibilityMode') === 'true';
+        const version = getCookie('version') || 'desktop';
+
+        // Reset all optional stylesheets
+        removeStylesheet('mobile-style');
+        removeStylesheet('accessible-style');
+        removeStylesheet('main-style');
+
+        // Base stylesheet
+        loadStylesheet('style.css', 'main-style');
+
+        if (version === 'mobile') {
+            loadStylesheet('style-mobile.css', 'mobile-style');
+            toggleVersionButton.textContent = 'Passa a versione desktop';
+            if (searchInput) searchInput.placeholder = 'Cerca...';
+        } else {
+            toggleVersionButton.textContent = 'Passa a versione mobile';
+            if (searchInput) searchInput.placeholder = 'Cerca con [CTRL] + S';
+        }
+
+        if (isAccessibility) {
+            loadStylesheet('style-accessible.css', 'accessible-style');
+            accessibilityToggle.checked = true;
+        } else {
+            accessibilityToggle.checked = false;
+        }
+    }
+
+    accessibilityToggle.addEventListener('change', function () {
         localStorage.setItem('accessibilityMode', this.checked);
+        applyStylesheets();
     });
+
+    const toggleVersionButton = document.getElementById('toggle-version');
+    toggleVersionButton.addEventListener('click', function () {
+        const currentVersion = getCookie('version') || 'desktop';
+        const newVersion = currentVersion === 'desktop' ? 'mobile' : 'desktop';
+        setCookie('version', newVersion, 7);
+        applyStylesheets();
+    });
+
+    applyStylesheets();
 
     function createCard(cardData) {
         const card = document.createElement('div');
@@ -194,6 +204,18 @@ document.addEventListener('DOMContentLoaded', function() {
             card.appendChild(linkButton);
         }
 
+        if (cardData.tags && cardData.tags.length > 0) {
+            const tagsContainer = document.createElement('div');
+            tagsContainer.classList.add('tags-container');
+            cardData.tags.forEach(tagText => {
+                const tag = document.createElement('span');
+                tag.classList.add('tag');
+                tag.textContent = `#${tagText}`;
+                tagsContainer.appendChild(tag);
+            });
+            card.appendChild(tagsContainer);
+        }
+
         return card;
     }
 
@@ -221,19 +243,48 @@ document.addEventListener('DOMContentLoaded', function() {
         populateSections(cardData);
     }
 
-    searchInput.addEventListener('input', function() {
+    searchInput.addEventListener('input', function () {
         const searchTerm = searchInput.value.toLowerCase();
         const cards = document.querySelectorAll('.card');
 
         cards.forEach(card => {
             const title = card.querySelector('h3').textContent.toLowerCase();
             const text = card.querySelector('p').textContent.toLowerCase();
-            if (title.includes(searchTerm) || text.includes(searchTerm)) {
-                card.style.display = 'block';
+            const tagsContainer = card.querySelector('.tags-container');
+            let tagText = '';
+            if (tagsContainer) {
+                tagText = Array.from(tagsContainer.querySelectorAll('.tag'))
+                    .map(tag => tag.textContent.toLowerCase())
+                    .join(' ');
+            }
+
+            const shouldShow = title.includes(searchTerm) || text.includes(searchTerm) || tagText.includes(searchTerm);
+
+            if (shouldShow) {
+                card.classList.remove('hidden', 'removed');
             } else {
-                card.style.display = 'none';
+                if (!card.classList.contains('hidden')) {
+                    card.classList.add('hidden');
+                    card.addEventListener('transitionend', function onTransitionEnd() {
+                        card.classList.add('removed');
+                        card.removeEventListener('transitionend', onTransitionEnd);
+                    });
+                }
             }
         });
+
+        if (searchInput.value.length > 0) {
+            clearSearchButton.classList.add('visible');
+        } else {
+            clearSearchButton.classList.remove('visible');
+        }
+    });
+
+    clearSearchButton.addEventListener('click', function () {
+        searchInput.value = '';
+        const inputEvent = new Event('input');
+        searchInput.dispatchEvent(inputEvent);
+        clearSearchButton.classList.remove('visible');
     });
 
     function handleAnchor() {
@@ -259,20 +310,79 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', handleAnchor);
     window.addEventListener('hashchange', handleAnchor);
 
-    document.addEventListener('keydown', function(event) {
+    document.addEventListener('keydown', function (event) {
         if ((event.ctrlKey || event.metaKey) && event.key === 's') {
             event.preventDefault();
             searchInput.focus();
         }
     });
 
-    searchInput.addEventListener('keydown', function(event) {
+    searchInput.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {
             searchInput.value = '';
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                card.style.display = 'block';
-            });
+            const inputEvent = new Event('input');
+            searchInput.dispatchEvent(inputEvent);
+            clearSearchButton.classList.remove('visible');
         }
     });
+
+    function showDeviceRedirectPopup(message, switchToVersion, currentViewVersion, stayPreference) {
+        const deviceRedirectPopup = document.createElement('div');
+        deviceRedirectPopup.id = 'device-redirect-popup';
+        deviceRedirectPopup.classList.add('popup');
+
+        const popupContent = document.createElement('div');
+        popupContent.classList.add('popup-content');
+
+        const popupMessage = document.createElement('p');
+        popupMessage.textContent = message;
+
+        const switchButton = document.createElement('button');
+        switchButton.textContent = `Passa alla versione ${switchToVersion}`;
+        switchButton.addEventListener('click', function () {
+            setCookie('version', switchToVersion, 7);
+            applyStylesheets();
+            deviceRedirectPopup.style.display = 'none';
+        });
+
+        const stayButton = document.createElement('button');
+        stayButton.textContent = `Rimani sulla versione ${currentViewVersion}`;
+        stayButton.addEventListener('click', function () {
+            setCookie(stayPreference, 'true', 7);
+            deviceRedirectPopup.style.display = 'none';
+        });
+
+        popupContent.appendChild(popupMessage);
+        popupContent.appendChild(switchButton);
+        popupContent.appendChild(stayButton);
+        deviceRedirectPopup.appendChild(popupContent);
+        document.body.appendChild(deviceRedirectPopup);
+
+        deviceRedirectPopup.style.display = 'flex';
+    }
+
+    function handleDeviceVersionMismatch() {
+        const isMobile = isMobileDevice();
+        const version = getCookie('version') || 'desktop';
+        const stayOnDesktop = getCookie('stayOnDesktop') === 'true';
+        const stayOnMobile = getCookie('stayOnMobile') === 'true';
+
+        if (isMobile && version === 'desktop' && !stayOnDesktop) {
+            showDeviceRedirectPopup(
+                'Abbiamo rilevato che stai utilizzando un dispositivo mobile. Vuoi passare alla versione ottimizzata per dispositivi mobili?',
+                'mobile',
+                'desktop',
+                'stayOnDesktop'
+            );
+        } else if (!isMobile && version === 'mobile' && !stayOnMobile) {
+            showDeviceRedirectPopup(
+                'Abbiamo rilevato che stai utilizzando un dispositivo desktop. Vuoi passare alla versione ottimizzata per desktop?',
+                'desktop',
+                'mobile',
+                'stayOnMobile'
+            );
+        }
+    }
+
+    handleDeviceVersionMismatch();
 });

@@ -205,13 +205,13 @@ const cardData = [
         section: "Lo schema E-R",
         id: "basi-6.2",
         title: "Esempio di schema E-R - Esercizio 1",
-        text: "Crea uno schema E-R per un DB per la gestione dei pazienti in un ospedale. Ogni paziente ha un nome, un cognome, una data di nascita e un codice fiscale. Ogni paziente può essere associato a più medici e ogni medico può essere associato a più pazienti. Ogni medico ha un nome, un cognome, una matricola e una specializzazione. Ogni paziente può avere più esami e ogni esame è associato a un solo paziente. Ogni esame ha una data e un risultato. Inoltre i pazienti possono seguire una terapia a casa o in ospedale. Ogni terapia ha un nome e una descrizione. Se la terapia è svolta in ospedale si vuole sapere quale farmaco viene usato.<br>*[Soluzione nella sezione dedicata](#soluzione_esercizio_1).*",
+        text: "Crea uno schema E-R per un DB per la gestione dei pazienti in un ospedale. Ogni paziente ha un nome, un cognome, una data di nascita e un codice fiscale. Ogni paziente può essere associato a più medici e ogni medico può essere associato a più pazienti. Ogni medico ha un nome, un cognome, una matricola e una specializzazione. Ogni paziente può avere più esami e ogni esame è associato a un solo paziente. Ogni esame ha una data e un risultato. Inoltre i pazienti possono seguire una terapia a casa o in ospedale. Ogni terapia ha un nome e una descrizione. Se la terapia è svolta in ospedale si vuole sapere quale farmaco viene usato.<br>*[Soluzione nella sezione dedicata](#soluzioni-1).*",
         tags: ["schema E-R", "diagramma E-R", "esercizio"],
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
     {
         section: "Soluzioni esercizi",
-        id: "basi-6.3",
+        id: "soluzione-1",
         title: "Soluzione esercizio 1",
         text: "**Schema E-R:**<br><big-img>![Schema E-R](es-1.png)<big-img><br>**Schema relazionale**<br>**Paziente** (Nome, Cognome, Data_di_nascita, **CF (pk)**)<br>**Medico** (Nome, Cognome, **Matricola (pk)**, Specializzazione)<br>**Esame** (**ID_Esame (pk)**, Data, Risultato, *CF (fk)*)<br>**Terapia** (**Nome (pk)**, Descrizione)<br><span style='white-space: pre;'>     </span>**Ospedale** (Farmaco)",
         tags: ["schema E-R", "diagramma E-R", "soluzione"],

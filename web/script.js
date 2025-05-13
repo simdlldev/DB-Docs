@@ -136,12 +136,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const isAccessibility = localStorage.getItem('accessibilityMode') === 'true';
         const version = getCookie('version') || 'desktop';
 
-        // Reset all optional stylesheets
         removeStylesheet('mobile-style');
         removeStylesheet('accessible-style');
         removeStylesheet('main-style');
 
-        // Base stylesheet
         loadStylesheet('style.css', 'main-style');
 
         if (version === 'mobile') {
@@ -177,46 +175,71 @@ document.addEventListener('DOMContentLoaded', function () {
     applyStylesheets();
 
     function createCard(cardData) {
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.id = cardData.id;
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.id = cardData.id;
 
-        if (cardData.style) {
-            for (const property in cardData.style) {
-                card.style[property] = cardData.style[property];
-            }
+    if (cardData.style) {
+        for (const property in cardData.style) {
+            card.style[property] = cardData.style[property];
         }
+    }
 
-        const title = document.createElement('h3');
-        title.textContent = cardData.title;
+    const isDesktop = !isMobileDevice();
+    if (cardData.class && isDesktop) {
+        card.classList.add(cardData.class);
+    }
 
-        const text = document.createElement('p');
-        text.innerHTML = marked.parse(cardData.text);
+    const title = document.createElement('h3');
+    title.textContent = cardData.title;
+    card.appendChild(title);
 
-        card.appendChild(title);
-        card.appendChild(text);
+    const contentWrapper = document.createElement('div');
+    contentWrapper.classList.add('content-wrapper');
 
-        if (cardData.linkText && cardData.linkUrl) {
-            const linkButton = document.createElement('a');
-            linkButton.href = cardData.linkUrl;
-            linkButton.textContent = cardData.linkText;
-            linkButton.classList.add('card-link-button');
-            card.appendChild(linkButton);
-        }
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('text-container');
+    textContainer.innerHTML = marked.parse(cardData.text);
 
-        if (cardData.tags && cardData.tags.length > 0) {
-            const tagsContainer = document.createElement('div');
-            tagsContainer.classList.add('tags-container');
-            cardData.tags.forEach(tagText => {
-                const tag = document.createElement('span');
-                tag.classList.add('tag');
-                tag.textContent = `#${tagText}`;
-                tagsContainer.appendChild(tag);
-            });
-            card.appendChild(tagsContainer);
-        }
+    const image = textContainer.querySelector('img');
+    if (image && card.classList.contains('side-by-side')) {
+        const imageContainer = document.createElement('div');
+        imageContainer.classList.add('image-container');
+        imageContainer.appendChild(image);
 
-        return card;
+        const contentContainer = document.createElement('div');
+        contentContainer.classList.add('content-container');
+        contentContainer.innerHTML = textContainer.innerHTML;
+
+        textContainer.innerHTML = '';
+        textContainer.appendChild(imageContainer);
+        textContainer.appendChild(contentContainer);
+    }
+
+    contentWrapper.appendChild(textContainer);
+    card.appendChild(contentWrapper);
+
+    if (cardData.linkText && cardData.linkUrl) {
+        const linkButton = document.createElement('a');
+        linkButton.href = cardData.linkUrl;
+        linkButton.textContent = cardData.linkText;
+        linkButton.classList.add('card-link-button');
+        card.appendChild(linkButton);
+    }
+
+    if (cardData.tags && cardData.tags.length > 0) {
+        const tagsContainer = document.createElement('div');
+        tagsContainer.classList.add('tags-container');
+        cardData.tags.forEach(tagText => {
+            const tag = document.createElement('span');
+            tag.classList.add('tag');
+            tag.textContent = `#${tagText}`;
+            tagsContainer.appendChild(tag);
+        });
+        card.appendChild(tagsContainer);
+    }
+
+    return card;
     }
 
     function populateSections(data) {
@@ -294,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (targetCard) {
                 const headerHeight = document.querySelector('.site-header').offsetHeight;
                 window.scrollTo({
-                    top: targetCard.offsetTop - headerHeight,
+                    top: targetCard.offsetTop - headerHeight -5,
                     behavior: 'smooth'
                 });
                 return;

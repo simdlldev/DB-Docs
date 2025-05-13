@@ -205,7 +205,7 @@ const cardData = [
         section: "Lo schema E-R",
         id: "basi-6.2",
         title: "Esempio di schema E-R - Esercizio 1",
-        text: "Crea uno schema E-R per un DB per la gestione dei pazienti in un ospedale. Ogni paziente ha un nome, un cognome, una data di nascita e un codice fiscale. Ogni paziente può essere associato a più medici e ogni medico può essere associato a più pazienti. Ogni medico ha un nome, un cognome, una matricola e una specializzazione. Ogni paziente può avere più esami e ogni esame è associato a un solo paziente. Ogni esame ha una data e un risultato. Inoltre i pazienti possono seguire una terapia a casa o in ospedale. Ogni terapia ha un nome e una descrizione. Se la terapia è svolta in ospedale si vuole sapere quale farmaco viene usato.<br>*[Soluzione nella sezione dedicata](#soluzioni-1).*",
+        text: "Crea uno schema E-R per un DB per la gestione dei pazienti in un ospedale. Ogni paziente ha un nome, un cognome, una data di nascita e un codice fiscale. Ogni paziente può essere associato a più medici e ogni medico può essere associato a più pazienti. Ogni medico ha un nome, un cognome, una matricola e una specializzazione. Ogni paziente può avere più esami e ogni esame è associato a un solo paziente. Ogni esame ha una data e un risultato. Inoltre i pazienti possono seguire una terapia a casa o in ospedale. Ogni terapia ha un nome e una descrizione. Se la terapia è svolta in ospedale si vuole sapere quale farmaco viene usato.<br>*[Soluzione nella sezione dedicata](#soluzione-1).*",
         tags: ["schema E-R", "diagramma E-R", "esercizio"],
         style: { backgroundColor: 'rgba(150, 150, 255, 0.5)' }
     },
